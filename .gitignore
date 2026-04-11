@@ -1,0 +1,110 @@
+# ─── OS & editors ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── .NET / C# ──────────────────────────────────────────────────────────────
+**/bin/
+**/obj/
+**/out/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.nupkg
+*.snupkg
+TestResults/
+*.coverage
+*.DotSettings.user
+
+# ─── Visual Studio ────────────────────────────────────────────────────────────
+.vs/
+*.vscode/
+*.csproj.user
+launchSettings.json
+
+# ─── Uploads / Static files ───────────────────────────────────────────────────
+**/wwwroot/uploads/
+**/uploads/
+!**/wwwroot/uploads/.gitkeep
+
+# ─── Node / Next.js (anywhere in repo) ────────────────────────────────────────
+node_modules/
+.next/
+out/
+build/
+dist/
+.turbo/
+.vercel/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Env & secrets (never commit real credentials)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+# Allow committing a template:
+!.env.example
+!**/.env.example
+
+# ─── Database (local dumps / backups only — not EF migration .cs files) ─────
+*.dump
+*.backup
+*.pgdump
+**/backups/
+*.sqlite
+*.db
+
+# ─── Misc ───────────────────────────────────────────────────────────────────
+*.log
+*.pem
+*.p12
+
+# ─── Optional: local AI / agent tooling (not part of the app) ───────────────
+.insforge/
+.agent/
+.agents/
+.augment/
+.claude/
+.cline/
+.github/copilot*
+.kilocode/
+.qoder/
+.qwen/
+.roo/
+.trae/
+.windsurf/
+
+# InsForge & AI agent skills
+.insforge
+.agent
+.agents
+.augment
+.claude
+.cline
+.kilocode
+.qoder
+.qwen
+.roo
+.trae
+.windsurf
