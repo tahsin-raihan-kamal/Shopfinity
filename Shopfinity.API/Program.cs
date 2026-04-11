@@ -42,9 +42,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("FrontendPolicy", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:3000",           
-                "https://shopfinity-pi.vercel.app"
+                "http://localhost:3000",
+                "https://shopfinity-pi.vercel.app",
+                "https://*.vercel.app"
               )
+              .SetIsOriginAllowedToAllowWildcardSubdomains()
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials(); 
