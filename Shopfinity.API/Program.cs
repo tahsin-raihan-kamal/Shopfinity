@@ -62,8 +62,17 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 });
 
 // ── Database ──────────────────────────────────────────────────────────────────
+// Support both ConnectionStrings__DefaultConnection and DATABASE_URL (Render/Vercel style)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? builder.Configuration["DATABASE_URL"];
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("Database connection string not found. Set ConnectionStrings__DefaultConnection or DATABASE_URL environment variable.");
+}
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+    options.UseNpgsql(connectionString,
         npgsqlOptionsAction: npgsqlOptions =>
         {
             npgsqlOptions.EnableRetryOnFailure(
