@@ -34,9 +34,10 @@ TestResults/
 launchSettings.json
 
 # ─── Uploads / Static files ───────────────────────────────────────────────────
-**/wwwroot/uploads/
-**/uploads/
+# Runtime upload directories (not source code)
+**/wwwroot/uploads/*
 !**/wwwroot/uploads/.gitkeep
+**/Shopfinity.API/uploads/
 
 # ─── Node / Next.js (anywhere in repo) ────────────────────────────────────────
 node_modules/
