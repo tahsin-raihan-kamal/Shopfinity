@@ -198,7 +198,7 @@ After first run, the database seeder creates:
 | Role | Email | Password |
 |------|-------|----------|
 | 👨‍💼 Admin | `admin@shopfinity.com` | `Admin123!` |
-| 👤 Customer | `test@shopfinity.com` | `Password123!` |
+| 👤 Customer | `test@shopfinity.com` | `Test123!` |
 
 > ⚠️ **Change these in production!**
 
