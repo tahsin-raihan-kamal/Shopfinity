@@ -198,7 +198,7 @@ After first run, the database seeder creates:
 | Role | Email | Password |
 |------|-------|----------|
 | 👨‍💼 Admin | `admin@shopfinity.com` | `Admin123!` |
-| 👤 Customer | `test@shopfinity.com` | `Password123!` |
+| 👤 Customer | `test@shopfinity.com` | `Test123!` |
 
 > ⚠️ **Change these in production!**
 
@@ -324,6 +324,7 @@ Distributed under the MIT License. See [LICENSE](./LICENSE) for details.
 - 💼 LinkedIn: [https://linkedin.com/nazrulislam7](https://linkedin.com/nazrulislam7)
 
 ---
+** roki **
 
 <p align="center">
   <i>Built with ❤️ using Next.js, ASP.NET Core, and PostgreSQL</i>
