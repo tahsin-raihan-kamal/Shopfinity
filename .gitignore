@@ -27,18 +27,6 @@ TestResults/
 *.coverage
 *.DotSettings.user
 
-# ─── Visual Studio ────────────────────────────────────────────────────────────
-.vs/
-*.vscode/
-*.csproj.user
-launchSettings.json
-
-# ─── Uploads / Static files ───────────────────────────────────────────────────
-# Runtime upload directories (not source code)
-**/wwwroot/uploads/*
-!**/wwwroot/uploads/.gitkeep
-**/Shopfinity.API/uploads/
-
 # ─── Node / Next.js (anywhere in repo) ────────────────────────────────────────
 node_modules/
 .next/
@@ -95,17 +83,4 @@ pnpm-debug.log*
 .roo/
 .trae/
 .windsurf/
-
-# InsForge & AI agent skills
-.insforge
-.agent
-.agents
-.augment
-.claude
-.cline
-.kilocode
-.qoder
-.qwen
-.roo
-.trae
-.windsurf
+.vs/
