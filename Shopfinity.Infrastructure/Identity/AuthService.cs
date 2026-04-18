@@ -8,11 +8,7 @@ using System.Threading;
 
 namespace Shopfinity.Infrastructure.Identity;
 
-/// <summary>
-/// Concrete implementation of IAuthService. Lives in Infrastructure because it
-/// depends on ASP.NET Identity (UserManager). AuthController only references
-/// IAuthService — no Infrastructure types leak into the API layer.
-/// </summary>
+
 public class AuthService : IAuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
@@ -29,7 +25,7 @@ public class AuthService : IAuthService
         _context        = context;
     }
 
-    // ─── Register ─────────────────────────────────────────────────────────────
+
 
     public async Task<AuthResponseDto> RegisterAsync(RegisterDto dto, CancellationToken ct = default)
     {
@@ -56,7 +52,6 @@ public class AuthService : IAuthService
         return await BuildAuthResponseAsync(user, ct);
     }
 
-    // ─── Login ────────────────────────────────────────────────────────────────
 
     public async Task<AuthResponseDto> LoginAsync(LoginDto dto, CancellationToken ct = default)
     {
@@ -67,7 +62,7 @@ public class AuthService : IAuthService
         return await BuildAuthResponseAsync(user, ct);
     }
 
-    // ─── Refresh Token ────────────────────────────────────────────────────────
+
 
     public async Task<AuthResponseDto> RefreshTokenAsync(RefreshTokenRequestDto dto, CancellationToken ct = default)
     {
@@ -77,17 +72,17 @@ public class AuthService : IAuthService
         if (stored == null || stored.ExpiryDate < DateTime.UtcNow)
             throw new UnauthorizedAccessException("Refresh token is invalid or has expired.");
 
-        // Rotate — revoke the used token to prevent replay attacks
+    
         stored.IsRevoked = true;
 
         var user = await _userManager.FindByIdAsync(stored.UserId)
                    ?? throw new InvalidOperationException("User associated with token not found.");
 
-        // BuildAuthResponseAsync saves the revocation + new token atomically
+        
         return await BuildAuthResponseAsync(user, ct);
     }
 
-    // ─── Logout / Revoke Token ────────────────────────────────────────────────
+
 
     public async Task RevokeTokenAsync(string refreshToken, CancellationToken ct = default)
     {
@@ -102,8 +97,6 @@ public class AuthService : IAuthService
             await _context.SaveChangesAsync(ct);
         }
     }
-
-    // ─── Shared helper ────────────────────────────────────────────────────────
 
     private async Task<AuthResponseDto> BuildAuthResponseAsync(ApplicationUser user, CancellationToken ct = default)
     {
