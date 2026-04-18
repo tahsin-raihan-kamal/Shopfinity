@@ -1,4 +1,4 @@
-// ─── Auth ─────────────────────────────────────────────────────────────────────
+
 export interface LoginDto {
   email: string
   password: string
@@ -21,7 +21,6 @@ export interface AuthResponseDto {
   roles: string[]
 }
 
-// ─── Products ─────────────────────────────────────────────────────────────────
 export interface ProductDto {
   id: string
   name: string
@@ -45,7 +44,7 @@ export interface CreateProductDto {
 
 export interface ProductSearchDto {
   searchTerm?: string
-  /** Alias for backend ?search= (admin / listing) */
+
   search?: string
   categoryId?: string
   categorySlug?: string
@@ -63,7 +62,6 @@ export interface ProductSearchSuggestionDto {
   slug: string
 }
 
-// ─── Pagination ───────────────────────────────────────────────────────────────
 export interface PaginatedResult<T> {
   items: T[]
   totalCount: number
@@ -74,7 +72,6 @@ export interface PaginatedResult<T> {
   hasPrev: boolean
 }
 
-// ─── Categories ───────────────────────────────────────────────────────────────
 export interface CategoryDto {
   id: string
   name: string
@@ -88,7 +85,6 @@ export interface CreateCategoryDto {
   description: string
 }
 
-// ─── Cart ─────────────────────────────────────────────────────────────────────
 export interface CartDto {
   id: string
   userId: string
@@ -112,7 +108,7 @@ export interface AddToCartDto {
   quantity: number
 }
 
-// ─── Orders ───────────────────────────────────────────────────────────────────
+
 export const ORDER_STATUS = {
   Pending: 'Pending',
   Processing: 'Processing',
