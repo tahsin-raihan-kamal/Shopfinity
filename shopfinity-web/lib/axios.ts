@@ -5,10 +5,8 @@ import toast from 'react-hot-toast'
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5049',
   timeout: 10_000,
-  withCredentials: true, // Send HttpOnly cookies automatically
+  withCredentials: true,
 })
-
-// ── Request Interceptor: attach CSRF token to mutating requests ───────────────
 axiosInstance.interceptors.request.use(config => {
   const csrf = Cookies.get('XSRF-TOKEN') // Standardized name
   if (csrf && ['post', 'put', 'delete', 'patch'].includes(config.method?.toLowerCase() ?? '')) {
@@ -17,7 +15,6 @@ axiosInstance.interceptors.request.use(config => {
   return config
 })
 
-// ── Response Interceptor: unwrap ApiResponse<T>, handle errors ────────────────
 let isRefreshing = false
 let failedQueue: Array<{ resolve: (v: unknown) => void; reject: (e: unknown) => void }> = []
 
