@@ -28,14 +28,13 @@ export async function serverFetch<T>(endpoint: string, options: FetchOptions = {
   const cookieStore = await cookies()
   const headers = new Headers(options.headers)
 
-  // 1. Forward Cookies for Authentication
+ 
   const allCookies = cookieStore.getAll()
   const cookieString = allCookies.map(c => `${c.name}=${c.value}`).join('; ')
   if (cookieString) {
     headers.set('Cookie', cookieString)
   }
 
-  // 2. Attach CSRF Token for mutating requests
   const method = options.method || 'GET'
   if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method.toUpperCase())) {
     const csrfToken = cookieStore.get('XSRF-TOKEN')?.value
@@ -44,7 +43,6 @@ export async function serverFetch<T>(endpoint: string, options: FetchOptions = {
     }
   }
 
-  // 3. Ensure JSON headers
   if (!headers.has('Content-Type') && !(options.body instanceof FormData)) {
     headers.set('Content-Type', 'application/json')
   }
