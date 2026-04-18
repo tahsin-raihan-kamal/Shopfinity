@@ -36,7 +36,7 @@ builder.Host.UseSerilog((context, loggerConfig) =>
         .WriteTo.File("logs/shopfinity-logs.txt", rollingInterval: RollingInterval.Day);
 });
 
-// ── CORS ──────────────────────────────────────────────────────────────────────
+// ── CORS ────────────────────
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendPolicy", policy =>
@@ -48,7 +48,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-// ── Database ──────────────────────────────────────────────────────────────────
+// ── Database ────────────────────────────────
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
         npgsqlOptionsAction: npgsqlOptions =>
@@ -61,7 +61,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<AppDbContext>());
 
-// ── Identity ──────────────────────────────────────────────────────────────────
+// ── Identity ─────────────────────────────────────
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.Password.RequireDigit           = true;
