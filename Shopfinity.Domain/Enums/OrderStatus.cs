@@ -1,9 +1,6 @@
 namespace Shopfinity.Domain.Enums;
 
-/// <summary>
-/// Shared order status enum — serialized as string via JsonStringEnumConverter.
-/// Mirrored on the frontend in types/index.ts.
-/// </summary>
+
 public enum OrderStatus
 {
     Pending    = 0,
